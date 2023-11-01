@@ -1,0 +1,19 @@
+.inline{
+  display: inline;
+}
+.flex{
+  display: flex;
+}
+.boxPosition{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.passFieldCSS{
+  margin: 0px;
+}
+.cpButton{
+  height: 55px;
+    position: relative;
+    top: 10px;
+}
