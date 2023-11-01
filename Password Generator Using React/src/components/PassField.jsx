@@ -8,7 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-export default function PassField({password}) {
+export default function PassField({password,passwordRef}) {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -26,6 +26,7 @@ export default function PassField({password}) {
             id="filled-adornment-password"
             type={showPassword ? 'text' : 'password'}
             value={password}
+            inputRef={passwordRef}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton

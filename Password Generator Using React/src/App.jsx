@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import "./App.css";
 import CopyButton from "./components/Button";
 import CheckBox from "./components/CheckBox";
@@ -10,7 +10,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [numAllowed, setNumAllowed] = useState(false);
   const [specialCharAllowed, setSpecialCharAllowed] = useState(false);
-
+  const passwordRef=useRef(null);
   //Functions Used
   function spCharVal() {
     setSpecialCharAllowed((prev) => !prev);
@@ -38,7 +38,13 @@ function App() {
     specialCharAllowed,
     setPassword,
   ]);
-
+  function copyPassword(){
+    if(passwordRef.current){
+      passwordRef.current.select();
+      passwordRef.current.setSelectionRange(0,length);
+    }
+    window.navigator.clipboard.writeText(password);
+  }
   useEffect(newpassword, [length, numAllowed, specialCharAllowed,newpassword]);
 
   return (
@@ -46,8 +52,8 @@ function App() {
       <div className="inline boxPosition">
         <h1>Password Generator</h1>
         <div className="flex">
-          <PassField password={password}/>
-          <CopyButton />
+          <PassField password={password} passwordRef={passwordRef}/>
+          <CopyButton handelCopyClick={copyPassword}/>
         </div>
         <div>
           <DSlider onSliderChange={passLength} />
