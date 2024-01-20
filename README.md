@@ -6,7 +6,7 @@ A web application built with React to generate secure passwords.
 
 - Customizable password length.
 - Inclusion/exclusion of numbers and special characters.
-- Copy generated passwords to the clipboard.
+- Copy generated passwords to the clipboard..
 
 ## Installation
 
